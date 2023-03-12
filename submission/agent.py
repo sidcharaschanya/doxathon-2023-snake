@@ -15,28 +15,28 @@ Position = tuple[int, int]
 class Agent(BaseAgent):
     """An agent for the snake competition on DOXA."""
 
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__()
-        self.dist_to_source: Optional[List[List[int]]] = None
-        self.edge_to: Optional[List[List[Position]]] = None
+        self.dist_to_source = None
+        self.edge_to = None
         self.reset()
 
-    def reset(self):
+    def reset(self) -> None:
         self.dist_to_source = [[-1 for _ in range(BOARD_SIZE)] for _ in range(BOARD_SIZE)]
         self.edge_to = [[(-1, -1) for _ in range(BOARD_SIZE)] for _ in range(BOARD_SIZE)]
 
     @staticmethod
-    def __pos(board: List[List[CellState]], cell_state: CellState):
+    def __pos(board: List[List[CellState]], cell_state: CellState) -> Position:
         for i, row in enumerate(board):
             for j, state in enumerate(row):
                 if state == cell_state:
                     return i, j
 
     @staticmethod
-    def __diff(a: Position, b: Position):
+    def __diff(a: Position, b: Position) -> Position:
         return (a[0] - b[0]) % BOARD_SIZE, (a[1] - b[1]) % BOARD_SIZE
 
-    def bfs(self, board: List[List[CellState]], source: Position):
+    def bfs(self, board: List[List[CellState]], source: Position) -> None:
         queue = deque()
         queue.append(source)
 
@@ -55,7 +55,7 @@ class Agent(BaseAgent):
                     self.dist_to_source[row][col] = self.dist_to_source[vertex[0]][vertex[1]] + 1
                     self.edge_to[row][col] = vertex
 
-    def shortest_path_to(self, vertex: Position, source) -> Optional[Position]:
+    def shortest_path_to(self, vertex: Position, source: Position) -> Optional[Position]:
         if self.dist_to_source[vertex[0]][vertex[1]] == -1:
             return None
 
@@ -69,7 +69,7 @@ class Agent(BaseAgent):
         return path[-1]
 
     @staticmethod
-    def act(step):
+    def act(step: Position) -> Action:
         if step[0] == 1:
             return Action.DOWN
         elif step[0] == 9:
