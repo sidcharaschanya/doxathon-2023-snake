@@ -3,6 +3,7 @@ from typing import List
 
 from snake import Action, BaseAgent, CellState, main
 
+
 #################################################################
 #   Modify the Agent class below to implement your own agent.   #
 #   You may define additional methods as you see fit.           #

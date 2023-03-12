@@ -5,9 +5,9 @@ import time
 
 from game import SnakeGame
 
-sys.path.append(os.path.dirname(os.path.abspath("submission/agent.py")))
-
 from submission.agent import Agent
+
+sys.path.append(os.path.dirname(os.path.abspath("submission/agent.py")))
 
 CLEAR_COMMAND = "cls" if os.name == "nt" else "clear"
 

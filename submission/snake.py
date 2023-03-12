@@ -46,7 +46,7 @@ class BaseAgent:
             board (List[List[CellState]]): The current state of the board.
 
         Returns:
-            Action: The direction in which the snake will mvoe next. eg. Action.UP
+            Action: The direction in which the snake will move next. e.g. Action.UP
         """
 
         raise NotImplementedError()

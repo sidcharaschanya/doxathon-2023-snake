@@ -33,7 +33,7 @@ class Board:
             size (int): The size of the board.
             seed (int, optional): The seed for the random number generator. Defaults to None.
         """
-        
+
         self.rng = Random(seed)
         self.size = size
         self.direction = Action.RIGHT
@@ -44,7 +44,7 @@ class Board:
     def _clear_board(self):
         """Clear the board."""
         self.board = [
-            [CellState.EMPTY for j in range(self.size)] for i in range(self.size)
+            [CellState.EMPTY for _ in range(self.size)] for _ in range(self.size)
         ]
 
     def spawn_snake(self, cells: List[Tuple[int, int]]) -> None:
@@ -99,7 +99,7 @@ class Board:
             Tuple[int, int]: The wrapped cell.
         """
 
-        return (point[0] % self.size, point[1] % self.size)
+        return point[0] % self.size, point[1] % self.size
 
     def get_direction(self, direction: Action) -> Action:
         """Get the direction.
@@ -145,7 +145,7 @@ class Board:
         return self._wrap_cell((x, y))
 
     def move(
-        self, direction: Action
+            self, direction: Action
     ) -> Tuple[Tuple[int, int], Optional[Tuple[int, int]]]:
         """Moves the snake in a particular direction one step.
         Args:
@@ -188,7 +188,7 @@ class SnakeGame:
     def initialise(self) -> Tuple[List[Tuple[int, int]], Tuple[int, int]]:
         """Initialise the game.
         Returns:
-            Tuple[List[Tuple[int, int]], Tuple[int, int]]: The coorinates of the snake and fruit.
+            Tuple[List[Tuple[int, int]], Tuple[int, int]]: The coordinates of the snake and fruit.
         """
         self.board.spawn_snake(SPAWNING_CELLS)
         fruit = self.board.spawn_fruit()
