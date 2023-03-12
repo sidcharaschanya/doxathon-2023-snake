@@ -1,7 +1,7 @@
 import random
 from typing import List
 
-from snake import Action, BaseAgent, main, CellState
+from snake import Action, BaseAgent, CellState, main
 
 #################################################################
 #   Modify the Agent class below to implement your own agent.   #
@@ -17,7 +17,7 @@ class Agent(BaseAgent):
         Args:
             board (List[List[CellState]]): The current state of the board.
         Returns:
-            Tuple[Tuple[int, int], str]: The coordinates of the head and direction of the snake.
+            Action: The direction to move in.
         """
 
         return Action(random.randrange(4))
