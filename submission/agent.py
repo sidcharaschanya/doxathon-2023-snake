@@ -72,7 +72,7 @@ class Agent(BaseAgent):
     def act(step):
         if step[0] == 1:
             return Action.DOWN
-        elif step[0] == -1:
+        elif step[0] == 9:
             return Action.UP
         elif step[1] == 1:
             return Action.RIGHT
