@@ -56,7 +56,7 @@ class SnakeGameRunner:
     def __init__(self, agent: BaseAgent) -> None:
         self.agent = agent
         self.board = [
-            [CellState.EMPTY for j in range(BOARD_SIZE)] for i in range(BOARD_SIZE)
+            [CellState.EMPTY for _ in range(BOARD_SIZE)] for _ in range(BOARD_SIZE)
         ]
 
     def _handle_initialisation(self):
